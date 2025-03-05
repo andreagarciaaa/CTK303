@@ -1,0 +1,67 @@
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+canvas {
+    display: block; /* Removes the default inline display behavior */
+    width: 100vw; /* Make the canvas width 100% of the viewport width */
+    height: 100vh; /* Make the canvas height 100% of the viewport height */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Lower stacking order for canvas */
+}
+
+#overit {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    width: 60vw; /* Adjust width as needed */
+    height: auto; /* Adapts to text */
+    max-height: 80vh; /* Prevents overflow */
+    background-color: rgba(0, 0, 0, 0.4); /* Transparent black */
+    color: white; /* Text color */
+    padding: 20px; /* Space inside the box */
+    z-index: 2; /* Above the canvas */
+    overflow: auto; /* Scroll if text overflows */
+    text-align: center; /* Center the text */
+    border-radius: 10px; /* Optional: rounded corners */
+    box-sizing: border-box;
+}
+
+
+/* Optional: Make the lyrics text scrollable if it overflows */
+#overit p {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+section { 
+    height: 90vh; /* 90% of viewport (window) height */
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+    font-size: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#section1, #section3 {
+    background-color: #CE1126; /* Red background for specific sections */
+}
+
+#peekaboo {
+    width: 50vw; /* 50% of viewport (window) width */
+    opacity: 0;
+    transform: translate(0, -200px); /* Fix translate syntax */
+    transition: all 1s ease; /* Smooth transition */
+}
+
+/* Corrected selector and added animation */
+#peekaboo.show {
+    opacity: 1;
+    transform: translate(0, 0);
+}
