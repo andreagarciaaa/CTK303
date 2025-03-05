@@ -1,0 +1,132 @@
+/* Center the title */
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    color: #fbf9f9;
+    margin-top: 20px;
+}
+
+
+/* Style the whole SVG */
+/* Style the whole SVG */
+#FlowerSVG {
+    width: 400px; /* Adjust width */
+    max-height: 90vh; /* Ensure it fits the height of the viewport */
+    display: block;
+    margin: 50px auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect: Scale up the entire SVG */
+#FlowerSVG:hover {
+    transform: scale(1.2);
+}
+
+/* Animate the path (cls-1) with scale */
+#FlowerSVG .cls-1 {
+    animation: scaleUp 4s infinite alternate; /* Increased duration to 4s */
+}
+
+/* Animate the circle (cls-2) with color change */
+#FlowerSVG .cls-2 {
+    animation: pulseColor 4s infinite alternate; /* Increased duration to 4s */
+}
+
+/* Animate the path (cls-3) with a rotation */
+#FlowerSVG .cls-3 {
+    animation: rotate 4s infinite alternate; /* Increased duration to 4s */
+}
+
+/* Keyframes for scaling animation */
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+/* Keyframes for color pulsation animation */
+@keyframes pulseColor {
+    0% {
+        fill: #f9ed38;
+    }
+    100% {
+        fill: #ff6347; /* Change to a different color */
+    }
+}
+
+/* Keyframes for rotation animation */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Gradient background animation */
+body {
+    background: linear-gradient(45deg, #7a5fff, #edfe7b);
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite;
+    margin: 0;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; /* Prevent drops from spilling out */
+}
+
+/* Keyframes for background gradient animation */
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Raindrop effect */
+.raindrop {
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    animation: fall 0.5s linear infinite;
+    opacity: 0.5;
+}
+
+.raindrop:nth-child(odd) {
+    width: 3px;
+    animation-duration: 0.7s;
+}
+
+.raindrop:nth-child(even) {
+    width: 2px;
+    animation-duration: 0.5s;
+}
+
+/* Randomized position for raindrops */
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh); /* Drops fall to the bottom */
+    }
+}
+
+/* Randomly distribute the raindrops across the screen */
+.raindrop {
+    left: calc(100% * var(--rand-x));
+    animation-delay: calc(-0.5s * var(--rand-delay));
+}
+
+/* Add this script to generate raindrops dynamically */

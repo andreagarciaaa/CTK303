@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower SVG Animation with Rain</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Rain effect -->
+    <div class="rain"></div>
+
+    <!-- Title -->
+    <h1>APRIL SHOWERS BRING MAY FLOWERS</h1>
+
+    <!-- Inline SVG (Flower) -->
+    <svg id="FlowerSVG" width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 605.5 855.65">
+        <defs>
+            <style>
+                .cls-1 {
+                    fill: #2b7d3e;
+                    transition: transform 1s ease-in-out;
+                }
+                .cls-2 {
+                    fill: #f9ed38;
+                    transition: transform 1s ease-in-out;
+                }
+                .cls-3 {
+                    fill: #ad2f92;
+                    transition: transform 1s ease-in-out;
+                }
+            </style>
+        </defs>
+        <path class="cls-1" d="M346.9,835.03s162.25-391.66,89.38-501.59l21.11-14.81s67.26,165.76-91.52,537.03l-18.97-20.63Z"/>
+        <g id="Layer_1-2">
+            <path class="cls-3" d="M488.49,241.21c233.38,0,64.95-291.74-51.74-89.61,116.69-202.12-220.18-202.12-103.49,0-116.69-202.12-285.12,89.61-51.74,89.61-233.38,0-64.95,291.74,51.74,89.62-116.69,202.12,220.18,202.12,103.49,0,116.69,202.12,285.12-89.62,51.74-89.62h0ZM385.01,316.59c-41.63,0-75.39-33.75-75.39-75.39s33.75-75.39,75.39-75.39,75.39,33.75,75.39,75.39-33.75,75.39-75.39,75.39Z"/>
+        </g>
+        <circle class="cls-2" cx="385.01" cy="241.21" r="75.39"/>
+    </svg>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const numRaindrops = 50; // Number of raindrops
+            const body = document.body;
+    
+            for (let i = 0; i < numRaindrops; i++) {
+                const raindrop = document.createElement('div');
+                raindrop.classList.add('raindrop');
+                raindrop.style.setProperty('--rand-x', Math.random());
+                raindrop.style.setProperty('--rand-delay', Math.random());
+                body.appendChild(raindrop);
+            }
+        });
+    </script>
+    
+</body>
+</html>
