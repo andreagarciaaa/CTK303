@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blank 1200</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="wrapper">
+
+    <div class="header">
+        <h1>A N D R E A &nbsp;&nbsp; G A R C I A </h1>
+    </div>
+     
+    <main>
+        <img src="profile.JPG" alt="Profile picture of Andrea Garcia">
+        <br><br>
+        <p><b> Media Creative Based in Illinois </b></p>
+        
+        <div id="text">
+            <p>I am a multidisciplinary artist, passionate about creating <br>
+            visually and audibly appealing human experiences within<br>  
+            art. Most passionate about post-production editing audio <br>
+            and video. I hold experience in Adobe Audition, Final Cut<br>
+            Pro, Illustrator, Photoshop.</p>
+        </div> 
+    </main>
+
+    <div id="navbar">
+        <a class="active" href="#Video">Video</a>
+        <a href="#Designs">Designs</a>
+        <a href="#Photos">Photos</a>
+        <a href="#Contact">Contact</a>
+    </div>
+
+    <div id="Video">
+        <h2> Video</h2>
+        <div class="video-carousel">
+            <video class="carousel-video" width="640" height="360" autoplay controls loop preload="auto">
+                <source src="HOTAIRBALLOON.MP4" type="video/mp4">
+                <track src="captions.vtt" kind="captions" srclang="en" label="English">
+            </video>
+            <video class="carousel-video" width="640" height="360" autoplay controls loop preload="auto">
+                <source src="RAYS.MP4" type="video/mp4">
+                <track src="captions.vtt" kind="captions" srclang="en" label="English">
+            </video>
+            <video class="carousel-video" width="640" height="360" autoplay controls loop preload="auto">
+                <source src="AHS.mov" type="video/mp4">
+                <track src="captions.vtt" kind="captions" srclang="en" label="English">
+            </video>
+
+            <!-- Side navigation buttons -->
+            <button class="carousel-nav prev" id="prevVideo">&lt;</button>
+            <button class="carousel-nav next" id="nextVideo">&gt;</button>
+        </div>
+    </div>
+
+    <div id="Designs">
+        <h2> Designs</h2>
+        <img src="design2.jpeg" alt="Image 1">
+        <img src="design22.jpeg" alt="Image 1">
+        <img src="design3.jpeg" alt="Image 1">
+        <img src="design31.jpeg" alt="Image 1">
+    </div>
+
+    <div id="Photos">
+        <h2> Photos</h2>
+        <img src="TX.JPG" alt="Image 1">
+        <img src="NO.JPG" alt="Image 2">
+        <img src="CHI.JPG" alt="Image 2">
+        <img src="BLONO.JPG" alt="Image 2">
+        <img src="CUN.JPG" alt="Image 2">
+        <img src="CDMX.JPG" alt="Image 2">
+    </div>
+    
+    <div id="Contact">
+        <h2> Contact</h2>
+        <b>Phone:</b> 309-445-0628
+        <b>Email: </b> andrea.garciaaa2020@gmail.com
+    </div>
+
+    <footer>
+        <p>Copyright Andy Garcia &copy;</p>
+    </footer>
+</div>
+
+<script>
+    // Sticky Navbar
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
+    // Video Carousel with next/prev functionality
+    let currentIndex = 0;
+    const videos = document.querySelectorAll('.carousel-video');
+    const prevButton = document.getElementById('prevVideo');
+    const nextButton = document.getElementById('nextVideo');
+
+    // Initialize the first video to be visible
+    videos[currentIndex].classList.add('active');
+    videos[currentIndex].play();
+
+    // Function to go to the previous video
+    prevButton.addEventListener('click', () => {
+        videos[currentIndex].pause(); // Stop current video
+        videos[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex === 0) ? videos.length - 1 : currentIndex - 1;
+        videos[currentIndex].classList.add('active');
+        videos[currentIndex].play(); // Play the next video
+    });
+
+    // Function to go to the next video
+    nextButton.addEventListener('click', () => {
+        videos[currentIndex].pause(); // Stop current video
+        videos[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex === videos.length - 1) ? 0 : currentIndex + 1;
+        videos[currentIndex].classList.add('active');
+        videos[currentIndex].play(); // Play the next video
+    });
+</script>
+</body>
+</html>
