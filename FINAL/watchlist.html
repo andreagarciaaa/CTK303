@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReelTalk 🎬</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    h1, h2 {
+      font-family: 'Bebas Neue', cursive;
+    }
+    .hero {
+      background-color: #dc3545;
+      color: white;
+      text-align: center;
+      padding: 4rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Banner First -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="display-4">Welcome to ReelTalk</h1>
+      <p class="lead">Log, rate, and love the films you watch 🎥</p>
+    </div>
+  </section>
+
+  <!-- Navbar (after hero) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">🎬 ReelTalk</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="watchlist.html">Watchlist</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Featured Films Carousel -->
+  <div class="container my-5">
+    <h2 class="text-warning text-center mb-4">🎞 Featured Films</h2>
+    <div id="filmCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-md-4">
+              <div class="card">
+                <img src="images/film-posters/inception.jpg" class="card-img-top" alt="Inception">
+                <div class="card-body">
+                  <h5 class="card-title">Inception</h5>
+                  <p class="card-text">A thief who steals corporate secrets through dreams.</p>
+                  <a href="films/inception.html" class="btn btn-warning">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Add more carousel-item divs for other films -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-md-4">
+              <div class="card">
+                <img src="images/film-posters/ladybird.jpg" class="card-img-top" alt="Lady Bird">
+                <div class="card-body">
+                  <h5 class="card-title">Lady Bird</h5>
+                  <p class="card-text">A teenager navigates love, life, and college dreams.</p>
+                  <a href="films/ladybird.html" class="btn btn-warning">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Repeat for 9 total films -->
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#filmCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#filmCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

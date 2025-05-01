@@ -1,0 +1,37 @@
+:root {
+  --primary-color: #f44336;
+  --accent-color: #ffd54f;
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --font-main: 'Bebas Neue', cursive;
+  --font-body: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-main);
+  color: var(--accent-color);
+}
+
+.hero {
+  background-color: #dc3545;
+  color: white;
+  text-align: center;
+  padding: 7rem 0 5rem 0; /* top, right/left, bottom */
+  position: relative;
+}
+
+#myCanvas {
+  width: 320px;
+  height: 320px;
+  position: absolute;
+  top: 70%; /* Adjusted to move the animation further down */
+  transform: translateY(-50%); /* Keeps it centered vertically */
+  left: 0;
+  padding-left: 2rem;
+}
