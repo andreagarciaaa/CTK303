@@ -22,9 +22,11 @@ h1, h2, h3 {
   background-color: #dc3545;
   color: white;
   text-align: center;
-  padding: 7rem 0 5rem 0; /* top, right/left, bottom */
+  padding: 7rem 0 5rem 0;
   position: relative;
+  overflow: visible; /* Ensure that the canvas is not clipped */
 }
+
 
 #myCanvas {
   width: 320px;
@@ -34,4 +36,57 @@ h1, h2, h3 {
   transform: translateY(-50%); /* Keeps it centered vertically */
   left: 0;
   padding-left: 2rem;
+}
+
+/* The overlay is initially hidden and will cover the entire screen */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Dark background */
+  color: white;
+  display: none;  /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;  /* Above all other content */
+}
+
+/* Styling for the content inside the overlay */
+.overlay-content {
+  background: #333;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Close button for overlay */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Button inside the card for viewing details */
+.view-details-btn {
+  background-color: #ffd54f;
+  color: #121212;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+  background-color: #f44336;
+  color: white;
 }

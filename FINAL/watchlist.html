@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ReelTalk 🎬</title>
+  <title>Your Watchlist – ReelTalk 🎬</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
 
   <style>
     body {
@@ -21,84 +22,118 @@
       color: white;
       text-align: center;
       padding: 4rem 0;
+      position: relative;
+    }
+    #myCanvas {
+      width: 120px;
+      height: 120px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Banner First -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="display-4">Welcome to ReelTalk</h1>
-      <p class="lead">Log, rate, and love the films you watch 🎥</p>
+<!-- Hero Banner -->
+<header class="hero bg-danger text-white py-4">
+  <div class="container d-flex flex-column align-items-center justify-content-center position-relative">
+    <!-- Canvas animation placeholder -->
+    <div class=" start-0 top-100 translate-middle-y d-none d-md-block ps-2" style="top: 70%; left: 0;">
+      <canvas id="myCanvas" style="width: 280px; height: 280px;"></canvas>
     </div>
-  </section>
 
-  <!-- Navbar (after hero) -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">🎬 ReelTalk</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="watchlist.html">Watchlist</a></li>
-          <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Featured Films Carousel -->
-  <div class="container my-5">
-    <h2 class="text-warning text-center mb-4">🎞 Featured Films</h2>
-    <div id="filmCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row justify-content-center">
-            <div class="col-md-4">
-              <div class="card">
-                <img src="images/film-posters/inception.jpg" class="card-img-top" alt="Inception">
-                <div class="card-body">
-                  <h5 class="card-title">Inception</h5>
-                  <p class="card-text">A thief who steals corporate secrets through dreams.</p>
-                  <a href="films/inception.html" class="btn btn-warning">View Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Add more carousel-item divs for other films -->
-        <div class="carousel-item">
-          <div class="row justify-content-center">
-            <div class="col-md-4">
-              <div class="card">
-                <img src="images/film-posters/ladybird.jpg" class="card-img-top" alt="Lady Bird">
-                <div class="card-body">
-                  <h5 class="card-title">Lady Bird</h5>
-                  <p class="card-text">A teenager navigates love, life, and college dreams.</p>
-                  <a href="films/ladybird.html" class="btn btn-warning">View Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Repeat for 9 total films -->
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#filmCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#filmCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+    <!-- Centered text -->
+    <div class="text-center">
+      <h1 class="display-5 mb-2">Welcome to ReelTalk</h1>
+      <p class="lead">Log, rate, and love the films you watch!</p>
     </div>
   </div>
+</header>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">REELtalk</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="watchlist.html">Watchlist</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Watchlist Section -->
+<div class="container my-5">
+  <h2 class="text-warning text-center mb-4">🎬 Your Watchlist 🎬</h2>
+  <div id="watchlist" class="row row-cols-1 row-cols-md-3 g-4">
+    <!-- JavaScript will insert movie cards here -->
+  </div>
+  <br>
+  <br>
+  <p id="emptyMessage" class="text-center text-muted">No movies in your watchlist yet. Start adding some! 🎥</p>
+</div>
+
+<!-- Bootstrap & Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const watchlistContainer = document.getElementById("watchlist");
+  const emptyMessage = document.getElementById("emptyMessage");
+
+  function loadWatchlist() {
+    const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+    watchlistContainer.innerHTML = "";
+
+    if (watchlist.length === 0) {
+      emptyMessage.style.display = "block";
+      return;
+    }
+
+    emptyMessage.style.display = "none";
+
+    watchlist.forEach((movie, index) => {
+      const col = document.createElement("div");
+      col.className = "col";
+      col.innerHTML = `
+        <div class="card h-100">
+          <img src="${movie.image}" class="card-img-top" alt="${movie.title}">
+          <div class="card-body">
+            <h5 class="card-title">${movie.title}</h5>
+            <p class="card-text">${movie.description || ""}</p>
+            <a href="${movie.link}" class="btn btn-warning mb-2">View Details</a>
+            <button class="btn btn-danger btn-sm remove-btn" data-index="${index}">🗑 Remove</button>
+          </div>
+        </div>
+      `;
+      watchlistContainer.appendChild(col);
+    });
+
+    // Add event listeners to "Remove" buttons
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const index = e.target.getAttribute('data-index');
+        removeFromWatchlist(index);
+      });
+    });
+  }
+
+  function removeFromWatchlist(index) {
+    const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+    watchlist.splice(index, 1);
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    loadWatchlist();
+  }
+
+  // Initial load
+  loadWatchlist();
+
+  const viewBtn = document.createElement("a");
+viewBtn.textContent = "View Details";
+viewBtn.classList.add("btn", "btn-warning", "me-2");
+viewBtn.href = movie.link;
+
+</script>
+
 </body>
 </html>

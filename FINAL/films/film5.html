@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Superbad – ReelTalk 🎬</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#"> REELtalk</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../watchlist.html">Watchlist</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Movie Detail -->
+  <div class="container my-5">
+    <div class="row">
+      <!-- Poster -->
+      <div class="col-md-4">
+        <img src="../images/superbad.jpg" alt="Superbad Poster" class="img-fluid rounded shadow">
+      </div>
+
+      <!-- Movie Info -->
+      <div class="col-md-8">
+        <h1 class="text-warning">Superbad</h1>
+        <p class="lead">Two awkward high school friends set out to enjoy one last wild night before graduation, hoping to score alcohol and impress girls. What follows is a chaotic, hilarious, and surprisingly heartfelt journey through teenage desperation and friendship. A modern classic of coming-of-age comedy.</p>
+
+        <!-- Movie Ratings and Status -->
+        <div class="mb-3">
+          <strong>Rating:</strong> ⭐⭐⭐⭐☆
+        </div>
+
+        <!-- Watch Buttons -->
+        <div class="mb-4">
+          <button class="btn btn-outline-success me-2" id="watchedButton">✅ Mark as Watched</button>
+          <button class="btn btn-outline-warning" id="watchlistButton">➕ Add to Watchlist</button>
+        </div>
+
+        <!-- Reviews Section -->
+        <h4>Reviews</h4>
+        <div class="card mb-2">
+          <div class="card-body">
+            <p class="mb-0">“Raunchy, ridiculous, and real. Superbad captures teenage friendship like no other film.”</p>
+            <small class="text-muted">— LaughTrack Reviews</small>
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body">
+            <p class="mb-0">“A comedy that’s not just funny but surprisingly heartfelt. Jonah Hill and Michael Cera are perfection.”</p>
+            <small class="text-muted">— FlickFrenzy</small>
+          </div>
+        </div>
+
+        <!-- Back Button -->
+        <a href="../index.html" class="btn btn-secondary mt-3">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Script for Watchlist -->
+  <script>
+    const watchlistButton = document.getElementById('watchlistButton');
+    const watchedButton = document.getElementById('watchedButton');
+
+    watchlistButton.addEventListener('click', () => {
+      const movie = {
+        title: "Superbad",
+        description: "Two best friends trying to make their last high school party unforgettable—by any means necessary.",
+        image: "images/superbad.jpg",
+        link: "films/superbad.html"
+      };
+
+      const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+      const alreadyExists = watchlist.some(item => item.title === movie.title);
+
+      if (!alreadyExists) {
+        watchlist.push(movie);
+        localStorage.setItem("watchlist", JSON.stringify(watchlist));
+        alert("✅ Movie added to your watchlist!");
+      } else {
+        alert("⚠️ This movie is already in your watchlist.");
+      }
+    });
+
+    let isWatched = false;
+    watchedButton.addEventListener('click', () => {
+      isWatched = !isWatched;
+      if (isWatched) {
+        watchedButton.textContent = '✅ Marked as Watched';
+        watchedButton.classList.remove('btn-outline-success');
+        watchedButton.classList.add('btn-success');
+      } else {
+        watchedButton.textContent = '✅ Mark as Watched';
+        watchedButton.classList.remove('btn-success');
+        watchedButton.classList.add('btn-outline-success');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -3,6 +3,8 @@ const ctx = canvas.getContext("2d");
 
 let baseWidth = 400;
 let baseHeight = 400;
+
+// Set canvas width and height explicitly
 canvas.width = baseWidth;
 canvas.height = baseHeight;
 
@@ -12,25 +14,25 @@ let spinning = false;
 let lightOn = false;
 
 function scaleToCanvas() {
+  // This will scale the content to fit inside the canvas size.
   const scale = Math.min(canvas.clientWidth / baseWidth, canvas.clientHeight / baseHeight);
   ctx.setTransform(scale, 0, 0, scale, 0, 0);
 }
 
 function draw() {
+  // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Scale the drawing to fit the canvas size
   scaleToCanvas();
 
+  // Set up the drawing styles
   ctx.fillStyle = "BLACK";  
   ctx.font = "30px Arial"; 
   ctx.textAlign = "center";
 
-  if (spinning) {
-    ctx.fillText("ACTION!", 250, 350);
-  } else {
-    ctx.fillText("LIGHTS...", 100, 80);
-    ctx.fillText("CAMERA...", 250, 100);
-  }
 
+  // Draw light effect when activated
   if (lightOn) {
     ctx.fillStyle = "rgba(255, 255, 100, 0.75)";
     ctx.beginPath();
@@ -41,6 +43,7 @@ function draw() {
     ctx.fill();
   }
 
+  // Draw rotating objects
   ctx.save();
   ctx.translate(69, 130);
   ctx.scale(0.5, 0.5);
@@ -75,6 +78,7 @@ function draw() {
   ctx.stroke();
   ctx.restore();
 
+  // Draw additional objects on the canvas
   ctx.fillStyle = "rgb(50, 50, 50)";
   ctx.fillRect(50, 150, 120, 60);
   ctx.fillStyle = "black";
@@ -97,6 +101,7 @@ function draw() {
   ctx.fillStyle = "rgb(70, 70, 70)";
   ctx.fillRect(110, 220, 10, 30);
 
+  // Draw more objects on the canvas
   ctx.strokeStyle = "rgb(10, 10, 10)";
   ctx.lineWidth = 7;
   ctx.beginPath();
@@ -119,17 +124,61 @@ function draw() {
   ctx.beginPath(); ctx.arc(90, 185, 5, 0, Math.PI * 2); ctx.fill();
 }
 
+// Event listeners to control animation state
 canvas.addEventListener("mousedown", () => {
   spinning = true;
   lightOn = true;
 });
+
 canvas.addEventListener("mouseup", () => {
   spinning = false;
   lightOn = false;
 });
 
+// Animation function that runs the drawing loop
 function animate() {
   draw();
   requestAnimationFrame(animate);
 }
+
+// Start the animation loop
 animate();
+
+
+// Show the overlay with the film details
+function showOverlay(film) {
+  // Set content based on the clicked film
+  if (film === 'inception') {
+    document.getElementById('movie-title').innerText = 'Inception';
+    document.getElementById('movie-description').innerText = 'A skilled thief, the absolute best in the dangerous art of extraction, steals valuable secrets from deep within the subconscious during the dream state.';
+  }
+
+  // Display the overlay
+  document.getElementById('overlay').style.display = 'flex';
+}
+
+// Close the overlay
+function closeOverlay() {
+  document.getElementById('overlay').style.display = 'none';
+}
+
+
+watchlistButton.addEventListener('click', () => {
+  const movie = {
+    title: "Catch Me If You Can",
+    image: "../images/catchme.jpg",
+    description: "Frank Abagnale Jr., a brilliant teenage con artist...",
+    link: "catchme.html"
+  };
+
+  let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+
+  const alreadyAdded = watchlist.some(item => item.title === movie.title);
+  if (!alreadyAdded) {
+    watchlist.push(movie);
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+    alert('Added to Watchlist!');
+  } else {
+    alert('Already in Watchlist!');
+  }
+});
